@@ -124,10 +124,35 @@ class LinkedList
         end
 
         new_node.next = current.next
+        
         current.next = new_node
-
     end
 
+    #remove — delete a node at a specific index in the list
+
+    def delete(position)
+       current = @head
+       prev = @head
+       temp = @head
+       index = 0
+
+       if position == 0:
+        @head = @head.next
+        return
+       end
+
+       while current
+        if index == position
+            temp = current.next
+            break
+        end
+        prev = current
+        current = current.next
+        index+=1
+       end
+
+       prev.next = temp
+    end
 
     def size
         length = 0
@@ -162,6 +187,7 @@ link_list.push(30)
 link_list.push(40)
 link_list.push(50)
 link_list.insert(70,3)
+link_list.delete(3)
 # link_list.get(3)
 # link_list.set(60, 3)
 
